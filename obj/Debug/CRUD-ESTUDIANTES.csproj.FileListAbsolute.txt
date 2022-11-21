@@ -1,0 +1,8 @@
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\bin\Debug\CRUD-ESTUDIANTES.exe.config
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\bin\Debug\CRUD-ESTUDIANTES.exe
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\bin\Debug\CRUD-ESTUDIANTES.pdb
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\obj\Debug\CRUD-ESTUDIANTES.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\obj\Debug\CRUD-ESTUDIANTES.csproj.SuggestedBindingRedirects.cache
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\obj\Debug\CRUD-ESTUDIANTES.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\obj\Debug\CRUD-ESTUDIANTES.exe
+C:\Users\Usuario\Desktop\FUNDAL-ACTIVIDADES\CRUD-ESTUDIANTES\obj\Debug\CRUD-ESTUDIANTES.pdb
