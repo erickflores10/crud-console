@@ -29,10 +29,10 @@ namespace CRUD_ESTUDIANTES
                 Console.WriteLine("------------------\n");
                 Console.WriteLine("1. Agregar estudiante");
                 Console.WriteLine("2. Listar estudiantes");
-                Console.WriteLine("3. Modificar nota de estudiante");
-                Console.WriteLine("4. Ingresar notas del estudiante");
-                Console.WriteLine("5. Eliminar estudiante");
-                Console.WriteLine("6. Listar notas de cada estudiante");
+                Console.WriteLine("3. Ingresar notas del estudiante");
+                Console.WriteLine("4. Listar notas de cada estudiante");
+                Console.WriteLine("5. Modificar nota de estudiante");
+                Console.WriteLine("6. Eliminar estudiante");
                 Console.WriteLine("7. Salir del programa\n");
 
                 Console.Write("Selecciona una opcion: ");
@@ -43,14 +43,14 @@ namespace CRUD_ESTUDIANTES
 
                 switch (option)
                 {
-                    case 1:
+                    case 1: // Agregar estudiante
                         Console.Clear();
 
                         students.Add(newStudent(3));
 
                         Console.ReadKey(true);
                         break;
-                    case 2:
+                    case 2: // Listar estudiantes
                         Console.Clear();
 
                         Console.WriteLine("--------------------");
@@ -87,20 +87,7 @@ namespace CRUD_ESTUDIANTES
 
                         Console.ReadKey(true);
                         break;
-                    case 3:
-                        Console.Clear();
-
-                        Console.WriteLine("---------------------------------");
-                        Console.WriteLine("  MODIFICAR DATOS DE ESTUDIANTE  ");
-                        Console.WriteLine("---------------------------------\n");
-
-                        /*
-                         * Falta esto
-                         */
-
-                        Console.ReadKey(true);
-                        break;
-                    case 4:
+                    case 3: // Ingresar notas de estudiantes
                         Console.Clear();
 
                         if (students.Count == 0)
@@ -108,73 +95,15 @@ namespace CRUD_ESTUDIANTES
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Debe ingresar, como minimo, un estudiante.");
                             Console.ForegroundColor = ConsoleColor.Gray;
-                        } else
+                        }
+                        else
                         {
                             califications.Add(addCalifications(4));
                         }
 
                         Console.ReadKey(true);
                         break;
-                    case 5:
-                        Console.Clear();
-
-                        int index;
-                        bool searchStatus = true;
-
-                        if (students.Count == 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("No se han encontrado registros para eliminar.");
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                        } else
-                        {
-                            Console.WriteLine("---------------------");
-                            Console.WriteLine(" ELIMINAR ESTUDIANTE ");
-                            Console.WriteLine("---------------------\n");
-
-                            Console.Write("Indice del estudiante a eliminar: ");
-
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
-                            index = int.Parse(Console.ReadLine());
-                            Console.ForegroundColor = ConsoleColor.Gray;
-
-                            // Eliminar estudiante
-                            for (int i = 0; i < students.Count; i++)
-                            {
-                                if (index == i)
-                                {
-                                    students.RemoveAt(i);
-
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine("El estudiante ha sido eliminado");
-                                    Console.ForegroundColor = ConsoleColor.Gray;
-                                }
-                                else
-                                {
-                                    searchStatus = false;
-                                }
-                            }
-
-                            //Eliminar notas de dicho estudiante en relacion con su indice
-                            for (int i = 0; i < califications.Count; i++)
-                            {
-                                if (index == i)
-                                {
-                                    califications.RemoveAt(i);
-                                } 
-                            }
-
-                            if (searchStatus != true)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("No se a encontrado dicho indice.");
-                                Console.ForegroundColor = ConsoleColor.Gray;
-                            }
-                        }
-
-                        Console.ReadKey(true);
-                        break;
-                    case 6:
+                    case 4: // Listar notas de cada estudiante
                         Console.Clear();
 
                         double prom;
@@ -217,7 +146,7 @@ namespace CRUD_ESTUDIANTES
 
                             prom = calAverage(califications[i]);
 
-                            if (prom > 14.00)
+                            if (prom >= 14.00)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("[Aprobado] ");
@@ -246,7 +175,106 @@ namespace CRUD_ESTUDIANTES
 
                         Console.ReadKey(true);
                         break;
-                    case 7:
+                    case 5: // Modificar nota de estudiante
+                        Console.Clear();
+                        double num_reem = 0, ind = 0;
+
+                        int estudiante;
+
+                        Console.WriteLine("---------------------------------");
+                        Console.WriteLine("  MODIFICAR DATOS DE ESTUDIANTE  ");
+                        Console.WriteLine("---------------------------------\n");
+
+                        Console.Write("* Ingrese estudiante : ");
+                        estudiante = int.Parse(Console.ReadLine());
+                        Console.Write("* Ingresa la nota del trabajo a reemplazar T[1-4]: ");
+                        ind = int.Parse(Console.ReadLine());
+                        Console.Write("* Ingresar nota a reemplazar: ");
+                        num_reem = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < califications.Count; i++)
+                        {
+                            if (i == estudiante)
+                            {
+                                for (int j = 0; j < califications[i].Length; j++)
+                                {
+
+                                    if (j == ind - 1)
+                                    {
+
+                                        califications[i][j] = num_reem;
+
+                                    }
+                                }
+
+                            }
+                        }
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\nLa nota ha sido actualizada.");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                        Console.ReadKey(true);
+                        break;
+                    case 6: // Eliminar estudiante
+                        Console.Clear();
+
+                        int index;
+                        bool searchStatus = true;
+
+                        if (students.Count == 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("No se han encontrado registros para eliminar.");
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                        }
+                        else
+                        {
+                            Console.WriteLine("---------------------");
+                            Console.WriteLine(" ELIMINAR ESTUDIANTE ");
+                            Console.WriteLine("---------------------\n");
+
+                            Console.Write("Indice del estudiante a eliminar: ");
+
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            index = int.Parse(Console.ReadLine());
+                            Console.ForegroundColor = ConsoleColor.Gray;
+
+                            // Eliminar estudiante
+                            for (int i = 0; i < students.Count; i++)
+                            {
+                                if (index == i)
+                                {
+                                    students.RemoveAt(i);
+
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("El estudiante ha sido eliminado");
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                }
+                                else
+                                {
+                                    searchStatus = false;
+                                }
+                            }
+
+                            //Eliminar notas de dicho estudiante en relacion con su indice
+                            for (int i = 0; i < califications.Count; i++)
+                            {
+                                if (index == i)
+                                {
+                                    califications.RemoveAt(i);
+                                }
+                            }
+
+                            if (searchStatus != true)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("No se a encontrado dicho indice.");
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                            }
+                        }
+
+                        Console.ReadKey(true);
+                        break;
+                    case 7: // Fin del programa
                         Console.Clear();
 
                         Console.WriteLine("Presiona una tecla para salir...");
